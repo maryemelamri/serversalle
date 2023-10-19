@@ -16,10 +16,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import service.MachineService;
 
-/**
- *
- * @author Lachgar
- */
 public class Serveur {
 
     public static void main(String[] args) {
