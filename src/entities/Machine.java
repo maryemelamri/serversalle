@@ -4,10 +4,8 @@
  * and open the template in the editor.
  */
 package entities;
-
 import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,36 +13,41 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQuery;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 /**
  *
  * @author Lachgar
  */
 @Entity
-@NamedQuery(name = "findAll", query = "from Machine") //HQL
-@NamedNativeQuery(name = "findAllNative", query = "select * from machine", resultClass = Machine.class) 
-public class Machine implements Serializable{
-     @Id
-     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     private int id;
-     private String ref;
-     private String marque;
-     private double prix;
- @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "salle_id", nullable = false)
-//    @OnDelete(action = OnDeleteAction.CASCADE)
- //   @JsonIgnore
+@NamedQuery(name = "findAllM", query = "from Machine") //HQL
+@NamedNativeQuery(name = "findAllNative", query = "select * from machine", resultClass = Machine.class)
+public class Machine implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String ref;
+    private String marque;
+    private double prix;
+    //@ManyToOne
+    //@JoinColumn(name = "salle_id", referencedColumnName = "id")
     private Salle salle;
- 
+
     public Machine() {
+    }
+
+    public Machine(String ref, String marque, double prix, Salle salle) {
+        this.ref = ref;
+        this.marque = marque;
+        this.prix = prix;
+        this.salle = salle;
     }
 
     public Machine(String ref, String marque, double prix) {
         this.ref = ref;
         this.marque = marque;
         this.prix = prix;
+
     }
 
     public int getId() {
@@ -79,11 +82,17 @@ public class Machine implements Serializable{
         this.prix = prix;
     }
 
+    public Salle getSalle() {
+        return salle;
+    }
+
+    public void setPrix(Salle salle) {
+        this.salle = salle;
+    }
+
     @Override
     public String toString() {
         return "Machine{" + "id=" + id + ", ref=" + ref + ", marque=" + marque + ", prix=" + prix + '}';
     }
-     
-     
-    
+
 }

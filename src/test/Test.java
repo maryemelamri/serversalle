@@ -29,8 +29,9 @@ public class Test {
             SalleService ss = new SalleService();
             ss.create(new Salle("Cd512"));
            
-            for(Machine m : ms.findAll())
+            for(Machine m : ms.findAllM())
                 System.out.println(m);
+            
             for(Salle s : ss.findAll())
                 System.out.println(s);
         } catch (RemoteException ex) {
