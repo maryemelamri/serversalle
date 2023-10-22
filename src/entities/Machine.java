@@ -19,8 +19,8 @@ import javax.persistence.NamedQuery;
  * @author Lachgar
  */
 @Entity
-@NamedQuery(name = "findAllM", query = "from Machine") //HQL
-@NamedNativeQuery(name = "findAllNative", query = "select * from machine", resultClass = Machine.class)
+
+@NamedNativeQuery(name = "findAllNativeM", query = "select * from machine", resultClass = Machine.class)
 public class Machine implements Serializable {
 
     @Id

@@ -117,7 +117,7 @@ public class MachineService extends UnicastRemoteObject implements IDao<Machine>
     }
 
     
-    public List<Machine> findAllM() throws RemoteException {
+    public List<Machine> findAll() throws RemoteException {
         Session session = null;
         Transaction tx = null;
         List<Machine> machines = null;
@@ -138,10 +138,7 @@ public class MachineService extends UnicastRemoteObject implements IDao<Machine>
         return machines;
     }
 
-    @Override
-    public List<Machine> findAll() throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
    
 

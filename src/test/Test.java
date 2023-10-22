@@ -29,7 +29,7 @@ public class Test {
             SalleService ss = new SalleService();
             ss.create(new Salle("Cd512"));
            
-            for(Machine m : ms.findAllM())
+            for(Machine m : ms.findAll())
                 System.out.println(m);
             
             for(Salle s : ss.findAll())
