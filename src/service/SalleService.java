@@ -124,7 +124,7 @@ public class SalleService extends UnicastRemoteObject implements IDao<Salle> {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             tx = session.beginTransaction();
-            salles = session.getNamedQuery("findAllNative").list();
+            salles = session.getNamedQuery("findAllNativeSalle").list();
             tx.commit();
         } catch (HibernateException ex) {
             if (tx != null) {

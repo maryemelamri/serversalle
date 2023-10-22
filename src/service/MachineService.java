@@ -116,7 +116,7 @@ public class MachineService extends UnicastRemoteObject implements IDao<Machine>
         return machine;
     }
 
-    
+    @Override
     public List<Machine> findAll() throws RemoteException {
         Session session = null;
         Transaction tx = null;
@@ -124,7 +124,7 @@ public class MachineService extends UnicastRemoteObject implements IDao<Machine>
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             tx = session.beginTransaction();
-            machines = session.getNamedQuery("findAllNativeM").list();
+            machines = session.getNamedQuery("findAll").list();
             tx.commit();
         } catch (HibernateException ex) {
             if (tx != null) {
@@ -137,9 +137,4 @@ public class MachineService extends UnicastRemoteObject implements IDao<Machine>
         }
         return machines;
     }
-
-    
-
-   
-
 }

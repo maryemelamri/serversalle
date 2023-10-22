@@ -20,20 +20,19 @@ import service.SalleService;
 public class Test {
     
     public static void main(String[] args) {
-        try {
-            MachineService ms = new MachineService();
-            ms.create(new Machine("RE44", "HP", 2000));
-            ms.create(new Machine("RE54", "DELL", 5000));
-            ms.create(new Machine("RE74", "LENOV", 6000));
-             
+        try {      
             SalleService ss = new SalleService();
-            ss.create(new Salle("Cd512"));
-           
-            for(Machine m : ms.findAll())
-                System.out.println(m);
+            MachineService ms = new MachineService();
+            ms.create(new Machine("RE44", "HP", 2000,ss.findById(1)));
+   
+       
+           // ss.create(new Salle("Cd512"));
             
             for(Salle s : ss.findAll())
                 System.out.println(s);
+            for(Machine m : ms.findAll())
+                System.out.println(m);
+           
         } catch (RemoteException ex) {
             Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
         }

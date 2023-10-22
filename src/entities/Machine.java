@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQuery;
@@ -19,8 +18,8 @@ import javax.persistence.NamedQuery;
  * @author Lachgar
  */
 @Entity
-
-@NamedNativeQuery(name = "findAllNativeM", query = "select * from machine", resultClass = Machine.class)
+@NamedQuery(name = "findAll", query = "from Machine") //HQL
+@NamedNativeQuery(name = "findAllNative", query = "select * from machine", resultClass = Machine.class)
 public class Machine implements Serializable {
 
     @Id
@@ -29,7 +28,7 @@ public class Machine implements Serializable {
     private String ref;
     private String marque;
     private double prix;
-    //@ManyToOne
+    @ManyToOne
     //@JoinColumn(name = "salle_id", referencedColumnName = "id")
     private Salle salle;
 
@@ -43,12 +42,6 @@ public class Machine implements Serializable {
         this.salle = salle;
     }
 
-    public Machine(String ref, String marque, double prix) {
-        this.ref = ref;
-        this.marque = marque;
-        this.prix = prix;
-
-    }
 
     public int getId() {
         return id;
@@ -92,7 +85,7 @@ public class Machine implements Serializable {
 
     @Override
     public String toString() {
-        return "Machine{" + "id=" + id + ", ref=" + ref + ", marque=" + marque + ", prix=" + prix + '}';
+        return "Machine{" + "id=" + id + ", ref=" + ref + ", marque=" + marque + ", prix=" + prix +  ", salle=" + getSalle() +'}';
     }
 
 }

@@ -18,8 +18,8 @@ import javax.persistence.NamedQuery;
 
 import javax.persistence.OneToMany;
 @Entity
-@NamedQuery(name = "findAll", query = "from Salle") //HQL
-@NamedNativeQuery(name = "findAllNative", query = "select * from salle", resultClass = Salle.class) 
+@NamedQuery(name = "findAllSalle", query = "from Salle") //HQL
+@NamedNativeQuery(name = "findAllNativeSalle", query = "select * from salle", resultClass = Salle.class) 
 public class Salle implements Serializable{
      @Id
      @GeneratedValue(strategy = GenerationType.IDENTITY)
