@@ -80,12 +80,17 @@ public class Machine implements Serializable {
     }
 
     public void setPrix(Salle salle) {
-        this.salle = salle;
+        this.setSalle(salle);
     }
 
+    /**
+     * @param salle the salle to set
+     */
+    public void setSalle(Salle salle) {
+        this.salle = salle;
+    }
     @Override
     public String toString() {
         return "Machine{" + "id=" + id + ", ref=" + ref + ", marque=" + marque + ", prix=" + prix +  ", salle=" + getSalle() +'}';
     }
-
 }
