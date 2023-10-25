@@ -29,7 +29,7 @@ public class Serveur {
 
             Naming.bind("rmi://localhost:1090/daomachine", daomachine);
             Naming.bind("rmi://localhost:1090/daosalle", daosalle);
-
+       
             System.out.println("En attente des clients");
 
         } catch (RemoteException ex) {

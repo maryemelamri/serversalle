@@ -24,15 +24,19 @@ public class Test {
             SalleService ss = new SalleService();
             MachineService ms = new MachineService();
             ms.create(new Machine("RE44", "HP", 2000,ss.findById(1)));
-   
+      Salle salleP = ss.findById(1);
+            
+            for (Machine m : ms.findAll()) {
+            System.out.println(m);
+            }
        
            // ss.create(new Salle("Cd512"));
             
-            for(Salle s : ss.findAll())
-                System.out.println(s);
-            for(Machine m : ms.findAll())
-                System.out.println(m);
-           
+           /*     for(Salle s : ss.findAll())
+           System.out.println(s.getMachines());
+           for(Machine m : ms.findAll())
+           System.out.println(m);
+           */
         } catch (RemoteException ex) {
             Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
         }

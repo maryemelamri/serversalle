@@ -6,9 +6,11 @@
 package entities;
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQuery;
@@ -28,8 +30,9 @@ public class Machine implements Serializable {
     private String ref;
     private String marque;
     private double prix;
-    @ManyToOne
-    //@JoinColumn(name = "salle_id", referencedColumnName = "id")
+     @ManyToOne(fetch =FetchType.EAGER)
+    @JoinColumn(name = "salle_id")
+    //@JoinColumn(name = "", referencedColumnName = "id")
     private Salle salle;
 
     public Machine() {
